@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="9.7.002">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="9.7.002" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="true" class="read_excel" compatibility="9.7.002" expanded="true" height="68" name="Read Excel (2)" width="90" x="45" y="34">
+        <parameter key="excel_file" value="/Users/tengku/Project/Pregnancy-master/data/RetailMartPregnancy.xlsx"/>
+        <parameter key="sheet_selection" value="sheet number"/>
+        <parameter key="sheet_number" value="1"/>
+        <parameter key="imported_cell_range" value="A1"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="date_format" value=""/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="Male.true.integer.attribute"/>
+          <parameter key="1" value="Female.true.integer.attribute"/>
+          <parameter key="2" value="Home.true.integer.attribute"/>
+          <parameter key="3" value="Apt.true.integer.attribute"/>
+          <parameter key="4" value="Pregnancy Test.true.integer.attribute"/>
+          <parameter key="5" value="Birth Control.true.integer.attribute"/>
+          <parameter key="6" value="Feminine Hygiene.true.integer.attribute"/>
+          <parameter key="7" value="Folic Acid.true.integer.attribute"/>
+          <parameter key="8" value="Prenatal Vitamins.true.integer.attribute"/>
+          <parameter key="9" value="Prenatal Yoga.true.integer.attribute"/>
+          <parameter key="10" value="Body Pillow.true.integer.attribute"/>
+          <parameter key="11" value="Ginger Ale.true.integer.attribute"/>
+          <parameter key="12" value="Sea Bands.true.integer.attribute"/>
+          <parameter key="13" value="Stopped buying ciggies.true.integer.attribute"/>
+          <parameter key="14" value="Cigarettes.true.integer.attribute"/>
+          <parameter key="15" value="Smoking Cessation.true.integer.attribute"/>
+          <parameter key="16" value="Stopped buying wine.true.integer.attribute"/>
+          <parameter key="17" value="Wine.true.integer.attribute"/>
+          <parameter key="18" value="Maternity Clothes.true.integer.attribute"/>
+          <parameter key="19" value="PREGNANT.true.binominal.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+        <parameter key="datamanagement" value="double_array"/>
+        <parameter key="data_management" value="auto"/>
+      </operator>
+      <operator activated="true" class="set_role" compatibility="9.7.002" expanded="true" height="82" name="Set PREGNANT as label" width="90" x="179" y="34">
+        <parameter key="attribute_name" value="PREGNANT"/>
+        <parameter key="target_role" value="label"/>
+        <list key="set_additional_roles"/>
+      </operator>
+      <operator activated="true" class="split_data" compatibility="9.7.002" expanded="true" height="82" name="Split Data 0.7:0.3" width="90" x="313" y="34">
+        <enumeration key="partitions">
+          <parameter key="ratio" value="0.7"/>
+          <parameter key="ratio" value="0.3"/>
+        </enumeration>
+        <parameter key="sampling_type" value="automatic"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+      </operator>
+      <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="9.7.002" expanded="true" height="103" name="Decision Tree" width="90" x="447" y="34">
+        <parameter key="criterion" value="gain_ratio"/>
+        <parameter key="maximal_depth" value="10"/>
+        <parameter key="apply_pruning" value="true"/>
+        <parameter key="confidence" value="0.1"/>
+        <parameter key="apply_prepruning" value="true"/>
+        <parameter key="minimal_gain" value="0.01"/>
+        <parameter key="minimal_leaf_size" value="2"/>
+        <parameter key="minimal_size_for_split" value="4"/>
+        <parameter key="number_of_prepruning_alternatives" value="3"/>
+      </operator>
+      <operator activated="true" class="read_excel" compatibility="9.7.002" expanded="true" height="68" name="Read Excel" width="90" x="313" y="187">
+        <parameter key="excel_file" value="/Users/tengku/Project/Pregnancy-master/data/RetailMartPregnancy.xlsx"/>
+        <parameter key="sheet_selection" value="sheet number"/>
+        <parameter key="sheet_number" value="2"/>
+        <parameter key="imported_cell_range" value="A1"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="first_row_as_names" value="true"/>
+        <list key="annotations"/>
+        <parameter key="date_format" value=""/>
+        <parameter key="time_zone" value="SYSTEM"/>
+        <parameter key="locale" value="English (United States)"/>
+        <parameter key="read_all_values_as_polynominal" value="false"/>
+        <list key="data_set_meta_data_information">
+          <parameter key="0" value="Male.true.integer.attribute"/>
+          <parameter key="1" value="Female.true.integer.attribute"/>
+          <parameter key="2" value="Home.true.integer.attribute"/>
+          <parameter key="3" value="Apt.true.integer.attribute"/>
+          <parameter key="4" value="Pregnancy Test.true.integer.attribute"/>
+          <parameter key="5" value="Birth Control.true.integer.attribute"/>
+          <parameter key="6" value="Feminine Hygiene.true.integer.attribute"/>
+          <parameter key="7" value="Folic Acid.true.integer.attribute"/>
+          <parameter key="8" value="Prenatal Vitamins.true.integer.attribute"/>
+          <parameter key="9" value="Prenatal Yoga.true.integer.attribute"/>
+          <parameter key="10" value="Body Pillow.true.integer.attribute"/>
+          <parameter key="11" value="Ginger Ale.true.integer.attribute"/>
+          <parameter key="12" value="Sea Bands.true.integer.attribute"/>
+          <parameter key="13" value="Stopped buying ciggies.true.integer.attribute"/>
+          <parameter key="14" value="Cigarettes.true.integer.attribute"/>
+          <parameter key="15" value="Smoking Cessation.true.integer.attribute"/>
+          <parameter key="16" value="Stopped buying wine.true.integer.attribute"/>
+          <parameter key="17" value="Wine.true.integer.attribute"/>
+          <parameter key="18" value="Maternity Clothes.true.integer.attribute"/>
+        </list>
+        <parameter key="read_not_matching_values_as_missings" value="false"/>
+        <parameter key="datamanagement" value="double_array"/>
+        <parameter key="data_management" value="auto"/>
+      </operator>
+      <operator activated="true" class="apply_model" compatibility="9.7.002" expanded="true" height="82" name="Apply Model" width="90" x="514" y="187">
+        <list key="application_parameters"/>
+        <parameter key="create_view" value="false"/>
+      </operator>
+      <connect from_op="Read Excel (2)" from_port="output" to_op="Set PREGNANT as label" to_port="example set input"/>
+      <connect from_op="Set PREGNANT as label" from_port="example set output" to_op="Split Data 0.7:0.3" to_port="example set"/>
+      <connect from_op="Split Data 0.7:0.3" from_port="partition 1" to_op="Decision Tree" to_port="training set"/>
+      <connect from_op="Decision Tree" from_port="model" to_op="Apply Model" to_port="model"/>
+      <connect from_op="Read Excel" from_port="output" to_op="Apply Model" to_port="unlabelled data"/>
+      <connect from_op="Apply Model" from_port="labelled data" to_port="result 1"/>
+      <connect from_op="Apply Model" from_port="model" to_port="result 2"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+    </process>
+  </operator>
+</process>
